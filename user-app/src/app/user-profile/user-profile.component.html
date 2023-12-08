@@ -1,0 +1,52 @@
+<section>
+    <h2>Create User</h2>
+    <div class="container mt-5">
+      <form [formGroup]="userForm" (ngSubmit)="submitForm()">
+      <div class="input-group mb-3">
+          <label for="firstName" class="form-label">First Name</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter first name (max 100 characters)"
+              formControlName="firstName">
+          </div>
+          <div
+            *ngIf="userForm.get('firstName')?.hasError('required') && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)"
+            class="text-danger">
+            First Name is required.
+          </div>
+          <div
+            *ngIf="userForm.get('firstName')?.hasError('maxlength') && (userForm.get('firstName')?.dirty || userForm.get('firstName')?.touched)"
+            class="text-danger">
+            Maximum 100 characters allowed for First Name.
+          </div>
+          <div *ngIf="userForm.get('firstName')?.hasError('invalidCharacters')" class="text-danger">
+            Special characters are not allowed except for the hyphen ("-") and space (" ").
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Last Name</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter last name (max 100 characters)"
+              formControlName="lastName">
+          </div>
+          <div
+            *ngIf="userForm.get('lastName')?.hasError('required') && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)"
+            class="text-danger">
+            Last Name is required.
+          </div>
+          <div
+            *ngIf="userForm.get('lastName')?.hasError('maxlength') && (userForm.get('lastName')?.dirty || userForm.get('lastName')?.touched)"
+            class="text-danger">
+            Maximum 100 characters allowed for First Name.
+          </div>
+          <div *ngIf="userForm.get('lastName')?.hasError('invalidCharacters')" class="text-danger">
+            Special characters are not allowed except for the hyphen ("-") and space (" ").
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Submit</button>
+      </form>
+    </div>
+  
+  </section>
